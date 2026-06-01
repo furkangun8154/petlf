@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <title>PetLF - Evcil Hayvan Bakım Oyunu</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <!-- Başlangıç Ekranı -->
+        <div id="startScreen" class="screen active">
+            <div class="start-content">
+                <h1>🐾 PetLF 🐾</h1>
+                <p class="subtitle">Kedi-Köpek Bakma Oyunu</p>
+                <div class="pet-selection">
+                    <button class="pet-btn" id="selectCat" onclick="startGame('cat')">
+                        <span class="pet-emoji">🐱</span>
+                        <span>Kedi Seç</span>
+                    </button>
+                    <button class="pet-btn" id="selectDog" onclick="startGame('dog')">
+                        <span class="pet-emoji">🐕</span>
+                        <span>Köpek Seç</span>
+                    </button>
+                </div>
+                <p class="info-text">Hayvanını seçip bakım yaparak mutlu tut!</p>
+            </div>
+        </div>
+
+        <!-- Oyun Ekranı -->
+        <div id="gameScreen" class="screen">
+            <div class="header">
+                <h2 id="petName">Minnoş</h2>
+                <div class="level-info">
+                    <span id="petLevel">Seviye: 1</span>
+                    <span id="score">Puan: 0</span>
+                </div>
+            </div>
+
+            <div class="pet-display">
+                <div id="petEmoji" class="pet-emoji-large">🐱</div>
+                <div class="pet-status">
+                    <p id="petMood">😊 Mutlu</p>
+                </div>
+            </div>
+
+            <div class="stats-container">
+                <div class="stat">
+                    <div class="stat-label">🍖 Açlık</div>
+                    <div class="stat-bar">
+                        <div id="hungerBar" class="stat-fill" style="width: 50%"></div>
+                    </div>
+                    <span id="hungerValue">50</span>
+                </div>
+
+                <div class="stat">
+                    <div class="stat-label">😴 Uyku</div>
+                    <div class="stat-bar">
+                        <div id="sleepBar" class="stat-fill" style="width: 70%"></div>
+                    </div>
+                    <span id="sleepValue">70</span>
+                </div>
+
+                <div class="stat">
+                    <div class="stat-label">😊 Mutluluk</div>
+                    <div class="stat-bar">
+                        <div id="happinessBar" class="stat-fill" style="width: 60%"></div>
+                    </div>
+                    <span id="happinessValue">60</span>
+                </div>
+
+                <div class="stat">
+                    <div class="stat-label">🧹 Temizlik</div>
+                    <div class="stat-bar">
+                        <div id="cleanBar" class="stat-fill" style="width: 80%"></div>
+                    </div>
+                    <span id="cleanValue">80</span>
+                </div>
+
+                <div class="stat">
+                    <div class="stat-label">❤️ Sağlık</div>
+                    <div class="stat-bar">
+                        <div id="healthBar" class="stat-fill" style="width: 85%"></div>
+                    </div>
+                    <span id="healthValue">85</span>
+                </div>
+            </div>
+
+            <div class="actions-container">
+                <button class="action-btn" onclick="feedPet()">
+                    <span class="btn-emoji">🍽️</span>
+                    <span>Besle</span>
+                </button>
+                <button class="action-btn" onclick="sleepPet()">
+                    <span class="btn-emoji">💤</span>
+                    <span>Uyut</span>
+                </button>
+                <button class="action-btn" onclick="playPet()">
+                    <span class="btn-emoji">🎾</span>
+                    <span>Oyna</span>
+                </button>
+                <button class="action-btn" onclick="washPet()">
+                    <span class="btn-emoji">🚿</span>
+                    <span>Yıka</span>
+                </button>
+                <button class="action-btn" onclick="healPet()">
+                    <span class="btn-emoji">💊</span>
+                    <span>Tedavi</span>
+                </button>
+            </div>
+
+            <div class="event-log">
+                <div id="eventMessage" class="event-text">Oyuna hoş geldin!</div>
+            </div>
+
+            <button class="reset-btn" onclick="resetGame()">🔄 Oyunu Sıfırla</button>
+        </div>
+
+        <!-- Oyun Bitti Ekranı -->
+        <div id="gameOverScreen" class="screen">
+            <div class="game-over-content">
+                <h1>💔 Oyun Bitti</h1>
+                <p id="gameOverMessage">Hayvanın çok hasta oldu...</p>
+                <div class="final-stats">
+                    <p><strong id="finalScore">Toplam Puan:</strong> 0</p>
+                    <p><strong id="finalLevel">Ulaştığın Seviye:</strong> 1</p>
+                </div>
+                <button class="action-btn large" onclick="location.reload()">🔄 Yeniden Başla</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="game.js"></script>
+</body>
+</html>
