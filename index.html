@@ -29,10 +29,34 @@
             </div>
         </div>
 
+        <!-- İsim Verme Ekranı -->
+        <div id="nameScreen" class="screen">
+            <div class="name-content">
+                <h1 id="nameTitle">Kedinize İsim Verin 🐱</h1>
+                <p class="name-subtitle">Hayvanınızın adını yazın:</p>
+                <div class="name-input-container">
+                    <input 
+                        type="text" 
+                        id="petNameInput" 
+                        class="name-input" 
+                        placeholder="Örn: Minnoş, Pamuk, Köşek..."
+                        maxlength="20"
+                        onkeypress="handleNameEnter(event)"
+                    >
+                    <span id="charCount" class="char-count">0/20</span>
+                </div>
+                <button class="action-btn large" onclick="confirmName()">✅ Onayla</button>
+                <button class="action-btn secondary" onclick="goBackToStart()">← Geri Dön</button>
+            </div>
+        </div>
+
         <!-- Oyun Ekranı -->
         <div id="gameScreen" class="screen">
             <div class="header">
-                <h2 id="petName">Minnoş</h2>
+                <div class="header-top">
+                    <h2 id="petName">Minnoş</h2>
+                    <button class="rename-btn" onclick="openRenameModal()" title="Adı Değiştir">✏️</button>
+                </div>
                 <div class="level-info">
                     <span id="petLevel">Seviye: 1</span>
                     <span id="score">Puan: 0</span>
@@ -128,6 +152,25 @@
                     <p><strong id="finalLevel">Ulaştığın Seviye:</strong> 1</p>
                 </div>
                 <button class="action-btn large" onclick="location.reload()">🔄 Yeniden Başla</button>
+            </div>
+        </div>
+
+        <!-- Ad Değiştirme Modal -->
+        <div id="renameModal" class="modal">
+            <div class="modal-content">
+                <h3>Adı Değiştir</h3>
+                <input 
+                    type="text" 
+                    id="renameInput" 
+                    class="name-input" 
+                    placeholder="Yeni adı yazın..."
+                    maxlength="20"
+                    onkeypress="handleRenameEnter(event)"
+                >
+                <div class="modal-buttons">
+                    <button class="action-btn" onclick="confirmRename()">✅ Onayla</button>
+                    <button class="action-btn secondary" onclick="closeRenameModal()">❌ İptal</button>
+                </div>
             </div>
         </div>
     </div>
