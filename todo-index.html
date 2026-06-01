@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <title>✓ TodoApp - Görev Listesi</title>
+    <link rel="stylesheet" href="todo-style.css">
+</head>
+<body>
+    <div class="container">
+        <div class="todo-app">
+            <!-- Header -->
+            <div class="header">
+                <h1>✓ TodoApp</h1>
+                <p class="subtitle">Görevlerini Yönet</p>
+            </div>
+
+            <!-- Input Section -->
+            <div class="input-section">
+                <div class="input-wrapper">
+                    <input 
+                        type="text" 
+                        id="todoInput" 
+                        class="todo-input" 
+                        placeholder="Yeni görev ekle..."
+                        autocomplete="off"
+                    >
+                    <button class="add-btn" onclick="addTodo()">
+                        <span class="btn-icon">+</span>
+                    </button>
+                </div>
+            </div>
+
+            <!-- Filter Section -->
+            <div class="filter-section">
+                <button class="filter-btn active" onclick="filterTodos('all')" data-filter="all">
+                    Tümü <span class="filter-count" id="countAll">0</span>
+                </button>
+                <button class="filter-btn" onclick="filterTodos('active')" data-filter="active">
+                    Aktif <span class="filter-count" id="countActive">0</span>
+                </button>
+                <button class="filter-btn" onclick="filterTodos('completed')" data-filter="completed">
+                    Tamamlanan <span class="filter-count" id="countCompleted">0</span>
+                </button>
+            </div>
+
+            <!-- Todo List -->
+            <div class="todo-list" id="todoList">
+                <!-- Todos will be inserted here -->
+            </div>
+
+            <!-- Empty State -->
+            <div id="emptyState" class="empty-state">
+                <div class="empty-icon">📝</div>
+                <p>Görev yok! Yeni bir görev ekle.</p>
+            </div>
+
+            <!-- Stats Section -->
+            <div class="stats-section">
+                <div class="stat">
+                    <span class="stat-label">Toplam Görev:</span>
+                    <span class="stat-value" id="totalTodos">0</span>
+                </div>
+                <div class="stat">
+                    <span class="stat-label">Tamamlanan:</span>
+                    <span class="stat-value" id="completedTodos">0</span>
+                </div>
+                <div class="stat">
+                    <span class="stat-label">İlerleme:</span>
+                    <span class="stat-value" id="progressPercent">0%</span>
+                </div>
+            </div>
+
+            <!-- Action Buttons -->
+            <div class="action-buttons">
+                <button class="action-btn clear-btn" onclick="clearCompleted()">
+                    🗑️ Tamamlanmışları Temizle
+                </button>
+                <button class="action-btn export-btn" onclick="exportTodos()">
+                    📥 Dışa Aktar
+                </button>
+                <button class="action-btn reset-btn" onclick="resetAll()">
+                    🔄 Sıfırla
+                </button>
+            </div>
+
+            <!-- Progress Bar -->
+            <div class="progress-container">
+                <div class="progress-bar">
+                    <div class="progress-fill" id="progressBar"></div>
+                </div>
+                <p class="progress-text">İlerleme gösterir</p>
+            </div>
+        </div>
+    </div>
+
+    <script src="todo-app.js"></script>
+</body>
+</html>
